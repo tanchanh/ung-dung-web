@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tanchanh's Space - Danh Sách Ứng Dụng & Công Cụ Tiện Ích</title>
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #080414;
+            --card-bg: rgba(18, 12, 38, 0.5);
+            --card-border: rgba(255, 255, 255, 0.06);
+            --accent-primary: #8b5cf6;
+            --accent-secondary: #d946ef;
+            --gradient-accent: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
+            --gradient-text: linear-gradient(to right, #ffffff, #d946ef);
+            --gradient-btn-local: linear-gradient(135deg, #7c3aed 0%, #c026d3 100%);
+            --gradient-btn-local-hover: linear-gradient(135deg, #6d28d9 0%, #a21caf 100%);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --html-color: #e34c26;
+            --shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(217, 70, 239, 0.12) 0%, transparent 40%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            min-height: 100vh;
+            line-height: 1.6;
+            padding: 3rem 1.5rem 5rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 72rem;
+            width: 100%;
+        }
+
+        /* Hero Section */
+        header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-area {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .avatar {
+            width: 6.5rem;
+            height: 6.5rem;
+            border-radius: 50%;
+            border: 3px solid rgba(139, 92, 246, 0.6);
+            padding: 3px;
+            background: var(--bg-color);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+            transition: var(--transition);
+        }
+
+        .profile-area:hover .avatar {
+            transform: scale(1.05) rotate(5deg);
+            border-color: var(--accent-secondary);
+            box-shadow: 0 8px 30px rgba(217, 70, 239, 0.5);
+        }
+
+        .github-badge {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: var(--gradient-accent);
+            border: 2px solid var(--bg-color);
+            border-radius: 50%;
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .github-badge svg {
+            width: 1.1rem;
+            height: 1.1rem;
+            fill: #ffffff;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.75rem;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            font-weight: 300;
+            max-width: 35rem;
+            margin-bottom: 2rem;
+        }
+
+        .stats-container {
+            display: flex;
+            gap: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            padding: 0.75rem 1.75rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .stat-val {
+            color: var(--accent-secondary);
+            font-weight: 700;
+        }
+
+        /* Interactive Controls */
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            width: 100%;
+        }
+
+        /* Search Bar */
+        .search-wrapper {
+            position: relative;
+            max-width: 32rem;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .search-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid rgba(255, 255, 255, 0.07);
+            border-radius: 1rem;
+            padding: 1.1rem 1.5rem 1.1rem 3.2rem;
+            color: var(--text-main);
+            font-size: 1.05rem;
+            font-family: inherit;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+            transition: var(--transition);
+            width: 1.3rem;
+            height: 1.3rem;
+        }
+
+        .search-input:focus+.search-icon {
+            color: var(--accent-primary);
+        }
+
+        .clear-btn {
+            position: absolute;
+            right: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 0.2rem;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .clear-btn:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Filter Chips */
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.6rem;
+            width: 100%;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--text-muted);
+            padding: 0.6rem 1.2rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .filter-btn.active {
+            color: #ffffff;
+            background: var(--gradient-btn-local);
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        /* Project List */
+        .grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            width: 100%;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        /* Project Card (Minimal Row) */
+        .card {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            transition: var(--transition);
+        }
+
+        .card:last-child {
+            border-bottom: none;
+        }
+
+        .card:hover {
+            border-color: rgba(217, 70, 239, 0.3);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.1rem;
+        }
+
+        .card-title-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+            color: #ffffff;
+            transition: var(--transition);
+        }
+
+        .card-title-link:hover {
+            color: var(--accent-secondary);
+        }
+
+        .card-icon {
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: inherit;
+            overflow-wrap: break-word;
+            word-break: normal;
+        }
+
+        .card-description {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 0.1rem;
+        }
+
+        .card-meta {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            opacity: 0.75;
+        }
+
+        .lang-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .lang-color {
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+            background-color: var(--html-color);
+        }
+
+        /* Action Buttons */
+        .card-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 0.8rem;
+            padding: 0.75rem 1rem;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            text-decoration: none;
+            width: 100%;
+        }
+
+        .btn-local {
+            background: var(--gradient-btn-local);
+            color: #ffffff;
+            box-shadow: 0 4px 10px rgba(124, 58, 237, 0.2);
+        }
+
+        .btn-local:hover {
+            background: var(--gradient-btn-local-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-github {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-main);
+        }
+
+        .btn-github:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-1px);
+        }
+
+        /* Empty State */
+        .empty-state {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            grid-column: 1 / -1;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        .empty-state svg {
+            width: 4rem;
+            height: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+
+        .empty-state h3 {
+            font-size: 1.25rem;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 5rem;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            max-width: 40rem;
+            width: 100%;
+            line-height: 1.6;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 2rem;
+        }
+
+        footer a {
+            color: var(--accent-secondary);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 2rem 1rem 4rem 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Hero Header -->
+        <header>
+            <div class="profile-area">
+                <img src="https://avatars.githubusercontent.com/u/130192548?v=4" alt="tanchanh Profile Picture" class="avatar">
+            </div>
+            <h1>ỨNG DỤNG WEB AN TOÀN</h1>
+            <p class="subtitle">Bộ sưu tập các ứng dụng web nhỏ gọn, công cụ tiện ích và sản phẩm mã hoá bảo mật chạy trực tiếp trên trình duyệt.</p>
+
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span>Tổng số phần mềm:</span>
+                    <span class="stat-val" id="total-count">11</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Controls Section -->
+        <section class="controls">
+            <div class="search-wrapper">
+                <input type="search" id="search-box" class="search-input" placeholder="Tìm kiếm công cụ hoặc tính năng..." autocomplete="off">
+                <svg class="search-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                <button id="clear-search" class="clear-btn" title="Xoá tìm kiếm">✕</button>
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Tất cả</button>
+                <button class="filter-btn" data-filter="security">Bảo mật</button>
+                <button class="filter-btn" data-filter="calc">Tính toán</button>
+                <button class="filter-btn" data-filter="text">Xử lý văn bản</button>
+                <button class="filter-btn" data-filter="compare">So sánh</button>
+                <button class="filter-btn" data-filter="utility">Tiện ích</button>
+            </div>
+        </section>
+
+        <!-- Projects Grid -->
+        <main class="grid" id="project-grid">
+            <!-- Project Cards will be dynamically rendered / loaded -->
+        </main>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="empty-state">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <h3>Không tìm thấy kết quả</h3>
+            <p>Hãy thử tìm kiếm với từ khoá khác hoặc chọn bộ lọc khác.</p>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>Bản quyền thiết kế &copy; 2026 bởi D.T.Chánh.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Dữ liệu tĩnh của 11 Repositories
+        const projectsData = [
+            {
+                name: "hen-gio",
+                emoji: "⏰",
+                title: "Đồng Hồ Đếm Ngược",
+                description: "Ứng dụng hẹn giờ, đếm ngược thời gian trực quan với hiệu ứng âm thanh sống động.",
+                category: "utility",
+                categoryText: "Tiện ích",
+                updated: "09/06/2026"
+            },
+            {
+                name: "mahoa-giaima",
+                emoji: "🔑",
+                title: "Mã Hoá & Giải Mã AES-256",
+                description: "Công cụ bảo mật mã hoá và giải mã dữ liệu văn bản hoặc tập tin trực tiếp trên trình duyệt sử dụng thuật toán mã hoá mạnh mẽ AES-256.",
+                category: "security",
+                categoryText: "Bảo mật",
+                updated: "09/06/2026"
+            },
+            {
+                name: "pha-con",
+                emoji: "🧪",
+                title: "Tính Lượng Nước Pha Cồn",
+                description: "Hỗ trợ tính toán chính xác lượng nước cần thiết cần bổ sung để giảm nồng độ cồn đến mức mong muốn.",
+                category: "calc",
+                categoryText: "Tính toán",
+                updated: "07/06/2026"
+            },
+            {
+                name: "csv-tsv",
+                emoji: "📊",
+                title: "Xem & Sửa File CSV/TSV",
+                description: "Công cụ trực quan cho phép tải lên, chỉnh sửa ô dữ liệu và tải về các tập tin CSV hoặc TSV một cách nhanh chóng.",
+                category: "text",
+                categoryText: "Xử lý văn bản",
+                updated: "07/06/2026"
+            },
+            {
+                name: "markdown-latex-to-doc",
+                emoji: "📝",
+                title: "Chuyển Đổi Markdown & LaTeX",
+                description: "Chuyển đổi nội dung văn bản Markdown có kèm các công thức toán học LaTeX sang định dạng tài liệu Word (.docx).",
+                category: "text",
+                categoryText: "Xử lý văn bản",
+                updated: "07/06/2026"
+            },
+            {
+                name: "sosanh-vanban",
+                emoji: "🔍",
+                title: "So Sánh Văn Bản",
+                description: "So sánh trực quan hai văn bản khác nhau để tìm ra điểm khác biệt, dòng bị xoá hoặc dòng được chèn thêm.",
+                category: "compare",
+                categoryText: "So sánh",
+                updated: "07/06/2026"
+            },
+            {
+                name: "nhau-ruou-ot",
+                emoji: "🍶",
+                title: "Công Thức Nhàu & Rượu Ớt",
+                description: "Cung cấp công thức và các bước chi tiết để làm nước Nhàu ngâm đường và bình Rượu Ớt tốt cho sức khoẻ gia đình.",
+                category: "utility",
+                categoryText: "Tiện ích",
+                updated: "06/06/2026"
+            },
+            {
+                name: "quet_qrcode",
+                emoji: "📷",
+                title: "Quét Mã QR Code",
+                description: "Hỗ trợ quét và đọc nhanh nội dung của mã QR trực tiếp từ hình ảnh tải lên hoặc dán (paste) trực tiếp từ Clipboard.",
+                category: "utility",
+                categoryText: "Tiện ích",
+                updated: "06/06/2026"
+            },
+            {
+                name: "xuly-vanban",
+                emoji: "🔤",
+                title: "Công Cụ Xử Lý Văn Bản",
+                description: "Cung cấp các bộ chuyển đổi chữ thường, chữ hoa, loại bỏ dấu tiếng Việt, định dạng văn bản chuẩn chỉnh.",
+                category: "text",
+                categoryText: "Xử lý văn bản",
+                updated: "05/06/2026"
+            },
+            {
+                name: "sosanh-hash-virus",
+                emoji: "🛡️",
+                title: "So Sánh File & Check Virus",
+                description: "Tính toán chuỗi HASH (MD5, SHA-256) của tập tin để so sánh tính toàn vẹn và hỗ trợ quét nhanh dấu hiệu virus qua mã băm.",
+                category: "security",
+                categoryText: "Bảo mật",
+                updated: "05/06/2026"
+            },
+            {
+                name: "tinhluong",
+                emoji: "💵",
+                title: "Công Cụ Tính Lương",
+                description: "Tính toán lương thực nhận (Net) từ lương tổng Gross, tính thuế thu nhập cá nhân và bảo hiểm xã hội chuẩn quy định Việt Nam.",
+                category: "calc",
+                categoryText: "Tính toán",
+                updated: "05/06/2026"
+            }
+        ];
+
+        // Khởi tạo các phần tử DOM
+        const projectGrid = document.getElementById("project-grid");
+        const searchBox = document.getElementById("search-box");
+        const clearSearchBtn = document.getElementById("clear-search");
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        const emptyState = document.getElementById("empty-state");
+        const totalCountSpan = document.getElementById("total-count");
+
+        let currentFilter = "all";
+        let searchQuery = "";
+
+        // Hàm dựng cấu trúc thẻ dự án (HTML Card)
+        function renderProjects() {
+            projectGrid.innerHTML = "";
+
+            // Lọc dữ liệu
+            const filteredProjects = projectsData.filter(proj => {
+                const matchesFilter = (currentFilter === "all" || proj.category === currentFilter);
+                const searchStr = `${proj.title} ${proj.name} ${proj.description} ${proj.categoryText}`.toLowerCase();
+                const matchesSearch = searchStr.includes(searchQuery.toLowerCase());
+                return matchesFilter && matchesSearch;
+            });
+
+            // Cập nhật số lượng
+            totalCountSpan.textContent = filteredProjects.length;
+
+            if (filteredProjects.length === 0) {
+                emptyState.style.display = "flex";
+                return;
+            }
+
+            emptyState.style.display = "none";
+
+            // Hiển thị danh sách các thẻ
+            filteredProjects.forEach(proj => {
+                const card = document.createElement("div");
+                card.className = "card";
+                card.innerHTML = `
+                    <div class="card-header">
+                        <a href="https://tanchanh.github.io/${proj.name}/" target="_blank" class="card-title-link">
+                            <span class="card-icon">${proj.emoji}</span>
+                            <h3 class="card-title">${proj.title}</h3>
+                        </a>
+                    </div>
+                    <p class="card-description">${proj.description}</p>
+                    <div class="card-meta">Cập nhật: ${proj.updated}</div>
+                `;
+                projectGrid.appendChild(card);
+            });
+        }
+
+        // Xử lý sự kiện khi gõ ô tìm kiếm
+        searchBox.addEventListener("input", (e) => {
+            searchQuery = e.target.value;
+            if (searchQuery.trim() !== "") {
+                clearSearchBtn.style.display = "flex";
+            } else {
+                clearSearchBtn.style.display = "none";
+            }
+            renderProjects();
+        });
+
+        // Xử lý nút xoá tìm kiếm
+        clearSearchBtn.addEventListener("click", () => {
+            searchBox.value = "";
+            searchQuery = "";
+            clearSearchBtn.style.display = "none";
+            renderProjects();
+            searchBox.focus();
+        });
+
+        // Xử lý sự kiện click bộ lọc (Category Filters)
+        filterButtons.forEach(btn => {
+            btn.addEventListener("click", () => {
+                filterButtons.forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                currentFilter = btn.getAttribute("data-filter");
+                renderProjects();
+            });
+        });
+
+        // Render lần đầu khi tải trang
+        renderProjects();
+    </script>
+</body>
+
+</html>

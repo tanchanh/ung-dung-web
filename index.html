@@ -4,11 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tanchanh's Space - Danh Sách Ứng Dụng & Công Cụ Tiện Ích</title>
-    <!-- Google Fonts Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Ứng Dụng Web An Toàn - D.T.Chánh</title>
     <style>
         :root {
             --bg-color: #080414;
@@ -34,7 +30,7 @@
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background-color: var(--bg-color);
             background-image:
                 radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
@@ -50,14 +46,14 @@
         }
 
         .container {
-            max-width: 72rem;
+            max-width: 30rem;
             width: 100%;
         }
 
         /* Hero Section */
         header {
             text-align: center;
-            margin-bottom: 3.5rem;
+            margin-bottom: 1rem;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -65,7 +61,7 @@
 
         .profile-area {
             position: relative;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0rem;
         }
 
         .avatar {
@@ -80,7 +76,7 @@
         }
 
         .profile-area:hover .avatar {
-            transform: scale(1.05) rotate(5deg);
+            transform: scale(1.1) rotate(5deg);
             border-color: var(--accent-secondary);
             box-shadow: 0 8px 30px rgba(217, 70, 239, 0.5);
         }
@@ -108,8 +104,7 @@
 
         h1 {
             font-size: 2.5rem;
-            font-weight: 800;
-            letter-spacing: -0.05em;
+            font-weight: 600;
             background: var(--gradient-text);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -121,7 +116,7 @@
             font-size: 1.1rem;
             font-weight: 300;
             max-width: 35rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
         }
 
         .stats-container {
@@ -154,14 +149,13 @@
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: 1.5rem;
             width: 100%;
         }
 
         /* Search Bar */
         .search-wrapper {
             position: relative;
-            max-width: 32rem;
             width: 100%;
             margin: 0 auto;
         }
@@ -320,16 +314,15 @@
 
         .card-description {
             color: var(--text-muted);
-            font-size: 0.92rem;
+            font-size: 1rem;
             font-weight: 400;
             line-height: 1.5;
             margin-bottom: 0.1rem;
         }
 
         .card-meta {
-            font-size: 0.78rem;
+            font-size: 1rem;
             color: var(--text-muted);
-            opacity: 0.75;
         }
 
         .lang-indicator {
@@ -428,7 +421,7 @@
             text-align: center;
             font-size: 0.85rem;
             color: var(--text-muted);
-            max-width: 40rem;
+            max-width: 100%;
             width: 100%;
             line-height: 1.6;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -479,10 +472,12 @@
         <!-- Hero Header -->
         <header>
             <div class="profile-area">
-                <img src="https://avatars.githubusercontent.com/u/130192548?v=4" alt="tanchanh Profile Picture" class="avatar">
+                <img src="https://avatars.githubusercontent.com/u/130192548?v=4" alt="tanchanh Profile Picture"
+                    class="avatar">
             </div>
             <h1>ỨNG DỤNG WEB AN TOÀN</h1>
-            <p class="subtitle">Bộ sưu tập các ứng dụng web nhỏ gọn, công cụ tiện ích và sản phẩm mã hoá bảo mật chạy trực tiếp trên trình duyệt.</p>
+            <p class="subtitle">Bộ sưu tập các ứng dụng web nhỏ gọn, công cụ tiện ích và sản phẩm mã hoá bảo mật chạy
+                trực tiếp trên trình duyệt.</p>
 
             <div class="stats-container">
                 <div class="stat-item">
@@ -495,9 +490,12 @@
         <!-- Controls Section -->
         <section class="controls">
             <div class="search-wrapper">
-                <input type="search" id="search-box" class="search-input" placeholder="Tìm kiếm công cụ hoặc tính năng..." autocomplete="off">
-                <svg class="search-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                <input type="search" id="search-box" class="search-input"
+                    placeholder="Tìm kiếm công cụ hoặc tính năng..." autocomplete="off">
+                <svg class="search-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
                 <button id="clear-search" class="clear-btn" title="Xoá tìm kiếm">✕</button>
             </div>
@@ -519,8 +517,10 @@
 
         <!-- Empty State -->
         <div class="empty-state" id="empty-state">
-            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
             <h3>Không tìm thấy kết quả</h3>
             <p>Hãy thử tìm kiếm với từ khoá khác hoặc chọn bộ lọc khác.</p>

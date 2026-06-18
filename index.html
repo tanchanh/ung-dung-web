@@ -482,7 +482,7 @@
             <div class="stats-container">
                 <div class="stat-item">
                     <span>Tổng số phần mềm:</span>
-                    <span class="stat-val" id="total-count">11</span>
+                    <span class="stat-val" id="total-count"></span>
                 </div>
             </div>
         </header>
@@ -507,6 +507,7 @@
                 <button class="filter-btn" data-filter="text">Xử lý văn bản</button>
                 <button class="filter-btn" data-filter="compare">So sánh</button>
                 <button class="filter-btn" data-filter="utility">Tiện ích</button>
+                <button class="filter-btn" data-filter="image">Hình ảnh</button>
             </div>
         </section>
 
@@ -533,8 +534,17 @@
     </div>
 
     <script>
-        // Dữ liệu tĩnh của 13 Repositories
+        // Dữ liệu tĩnh của 12 Repositories
         const projectsData = [
+            {
+                name: "anh-tu-docx-pdf",
+                emoji: "🖼️",
+                title: "Lấy Ảnh Từ DOCX & PDF",
+                description: "Lấy ảnh gốc từ định dạng Word (.docx) và chuyển từng trang từ file PDF thành ảnh.",
+                category: "image",
+                categoryText: "Hình ảnh",
+                updated: "18/06/2026"
+            },
             {
                 name: "don-xin-nghi",
                 emoji: "📄",

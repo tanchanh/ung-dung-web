@@ -501,16 +501,8 @@
                 <button id="clear-search" class="clear-btn" title="Xoá tìm kiếm">✕</button>
             </div>
 
-            <div class="filters">
-                <button class="filter-btn active" data-filter="all">Tất cả</button>
-                <button class="filter-btn" data-filter="security">Bảo mật</button>
-                <button class="filter-btn" data-filter="calc">Tính toán</button>
-                <button class="filter-btn" data-filter="text">Xử lý văn bản</button>
-                <button class="filter-btn" data-filter="compare">So sánh</button>
-                <button class="filter-btn" data-filter="utility">Tiện ích</button>
-                <button class="filter-btn" data-filter="image">Hình ảnh</button>
-                <button class="filter-btn" data-filter="simulation">Mô phỏng</button>
-                <button class="filter-btn" data-filter="health">Sức khoẻ</button>
+            <div class="filters" id="filters-container">
+                <!-- Bộ lọc danh mục sẽ tự động được sinh ra bằng JS -->
             </div>
         </section>
 
@@ -537,15 +529,25 @@
     </div>
 
     <script>
+        // Bản đồ danh mục (Category Map) để chuyển đổi mã danh mục sang tên hiển thị tiếng Việt
+        const categoryMap = {
+            security: "Bảo mật",
+            calc: "Tính toán",
+            text: "Xử lý văn bản",
+            utility: "Tiện ích",
+            office: "Văn phòng",
+            simulation: "Mô phỏng",
+            health: "Sức khoẻ"
+        };
+
         // Dữ liệu tĩnh của Repositories
         const projectsData = [
             {
                 name: "xoa-font-pdf",
                 emoji: "🔤",
-                title: "Xoá Font Từ PDF",
+                title: "Xoá Font Trong File PDF",
                 description: "Gỡ bỏ Font để giảm dung lượng PDF.",
                 category: "office",
-                categoryText: "Văn phòng",
                 updated: "08/07/2026"
             },
             {
@@ -554,7 +556,6 @@
                 title: "Chuẩn Hoá Dữ Liệu Karaoke",
                 description: "Chuẩn hoá dữ liệu Karaoke từ file TXT hoặc Clipboard.",
                 category: "text",
-                categoryText: "Xử lý văn bản",
                 updated: "05/07/2026"
             },
             {
@@ -563,7 +564,6 @@
                 title: "Huyết Áp Của Bạn",
                 description: "Theo dõi chỉ số huyết áp và nhịp tim offline. Tự động phân tích chẩn đoán y khoa từ cẩm nang chuẩn, vẽ biểu đồ đường SVG kép trực quan, mã hoá bảo mật dữ liệu cục bộ và hỗ trợ xuất/nhập sao lưu CSV.",
                 category: "health",
-                categoryText: "Sức khoẻ",
                 updated: "28/06/2026"
             },
             {
@@ -572,7 +572,6 @@
                 title: "Mô Hình Hệ Mặt Trời 3D",
                 description: "Mô hình Hệ Mặt Trời 3D tương tác trực quan, có thể xoay góc nhìn, phóng to, điều chỉnh tốc độ quỹ đạo và theo dõi thông tin chi tiết của từng hành tinh.",
                 category: "simulation",
-                categoryText: "Mô phỏng",
                 updated: "25/06/2026"
             },
             {
@@ -581,7 +580,6 @@
                 title: "Công Cụ Xử Lý Văn Bản",
                 description: "Cung cấp các bộ chuyển đổi chữ thường, chữ hoa, thêm hashtag cho bài viết, loại bỏ ký tự không hợp lệ dùng cho tên file.",
                 category: "text",
-                categoryText: "Xử lý văn bản",
                 updated: "18/06/2026"
             },
             {
@@ -590,7 +588,6 @@
                 title: "Lấy Ảnh Từ DOCX & PDF",
                 description: "1. Lấy ảnh gốc từ file Word (.docx).<br>2. Chuyển file PDF thành ảnh.",
                 category: "office",
-                categoryText: "Văn phòng",
                 updated: "18/06/2026"
             },
             {
@@ -599,7 +596,6 @@
                 title: "Tạo Đơn Xin Tạm Nghỉ Việc",
                 description: "Tạo đơn xin tạm nghỉ việc định dạng Word (.docx) đúng chuẩn văn bản hành chính.",
                 category: "text",
-                categoryText: "Xử lý văn bản",
                 updated: "10/06/2026"
             },
             {
@@ -608,7 +604,6 @@
                 title: "Mã Hoá & Giải Mã AES-256",
                 description: "Công cụ bảo mật mã hoá và giải mã dữ liệu văn bản hoặc tập tin trực tiếp trên trình duyệt sử dụng thuật toán mã hoá mạnh mẽ AES-256.",
                 category: "security",
-                categoryText: "Bảo mật",
                 updated: "09/06/2026"
             },
             {
@@ -617,7 +612,6 @@
                 title: "Tính Lượng Nước Pha Cồn",
                 description: "Hỗ trợ tính lượng nước cần bổ sung để giảm nồng độ.",
                 category: "calc",
-                categoryText: "Tính toán",
                 updated: "07/06/2026"
             },
             {
@@ -626,7 +620,6 @@
                 title: "Xem & Sửa File CSV/TSV",
                 description: "Công cụ trực quan cho phép tải lên, lọc, chỉnh sửa ô dữ liệu và tải về các tập tin CSV hoặc TSV một cách nhanh chóng.",
                 category: "text",
-                categoryText: "Xử lý văn bản",
                 updated: "07/06/2026"
             },
             {
@@ -635,7 +628,6 @@
                 title: "Chuyển Đổi Markdown & LaTeX",
                 description: "Chuyển đổi nội dung văn bản Markdown có kèm các công thức toán học LaTeX sang định dạng tài liệu Word (.docx).",
                 category: "text",
-                categoryText: "Xử lý văn bản",
                 updated: "07/06/2026"
             },
             {
@@ -644,7 +636,6 @@
                 title: "So Sánh Văn Bản",
                 description: "So sánh trực quan hai văn bản khác nhau để tìm ra điểm khác biệt.",
                 category: "utility",
-                categoryText: "Tiện ích",
                 updated: "07/06/2026"
             },
             {
@@ -653,7 +644,6 @@
                 title: "Công Thức Nhàu & Rượu Ớt",
                 description: "Cung cấp công thức và các bước chi tiết để làm nước Nhàu ngâm đường và Rượu Ớt.",
                 category: "health",
-                categoryText: "Sức khoẻ",
                 updated: "06/06/2026"
             },
             {
@@ -662,7 +652,6 @@
                 title: "Quét Mã QR Code",
                 description: "Hỗ trợ quét và đọc nhanh nội dung của mã QR trực tiếp từ hình ảnh tải lên hoặc dán (paste) trực tiếp từ Clipboard.",
                 category: "utility",
-                categoryText: "Tiện ích",
                 updated: "06/06/2026"
             },
             {
@@ -671,7 +660,6 @@
                 title: "So Sánh File & Check Virus",
                 description: "Tính toán chuỗi HASH (SHA-256) của tập tin để so sánh tính toàn vẹn và hỗ trợ quét nhanh dấu hiệu virus qua mã băm.",
                 category: "security",
-                categoryText: "Bảo mật",
                 updated: "05/06/2026"
             },
             {
@@ -680,32 +668,83 @@
                 title: "Công Cụ Tính Lương",
                 description: "Tính tổng lương từ các khoản phụ cấp trừ đi bảo hiểm",
                 category: "calc",
-                categoryText: "Tính toán",
                 updated: "05/06/2026"
             }
         ];
+
+        // Hàm chuyển đổi chuỗi tiếng Việt sang dạng không dấu để hỗ trợ tìm kiếm dễ dàng
+        function removeAccents(str) {
+            if (!str) return "";
+            return str
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/đ/g, "d")
+                .replace(/Đ/g, "D");
+        }
 
         // Khởi tạo các phần tử DOM
         const projectGrid = document.getElementById("project-grid");
         const searchBox = document.getElementById("search-box");
         const clearSearchBtn = document.getElementById("clear-search");
-        const filterButtons = document.querySelectorAll(".filter-btn");
+        const filtersContainer = document.getElementById("filters-container");
         const emptyState = document.getElementById("empty-state");
         const totalCountSpan = document.getElementById("total-count");
 
         let currentFilter = "all";
         let searchQuery = "";
 
+        // Hàm dựng các nút bộ lọc tự động
+        function renderFilters() {
+            // Lấy danh sách các category thực tế có trong projectsData
+            const activeCategories = [...new Set(projectsData.map(p => p.category))];
+
+            let filtersHtml = `<button class="filter-btn active" data-filter="all">Tất cả</button>`;
+
+            // Duyệt qua categoryMap để đảm bảo giữ nguyên thứ tự hiển thị mong muốn
+            for (const [key, value] of Object.entries(categoryMap)) {
+                if (activeCategories.includes(key)) {
+                    filtersHtml += `<button class="filter-btn" data-filter="${key}">${value}</button>`;
+                }
+            }
+
+            // Dự phòng: Nếu có category nào mới trong projectsData mà chưa được định nghĩa ở categoryMap
+            activeCategories.forEach(cat => {
+                if (!(cat in categoryMap)) {
+                    filtersHtml += `<button class="filter-btn" data-filter="${cat}">${cat}</button>`;
+                }
+            });
+
+            filtersContainer.innerHTML = filtersHtml;
+
+            // Gắn sự kiện click cho các nút bộ lọc mới được tạo
+            const buttons = filtersContainer.querySelectorAll(".filter-btn");
+            buttons.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    buttons.forEach(b => b.classList.remove("active"));
+                    btn.classList.add("active");
+                    currentFilter = btn.getAttribute("data-filter");
+                    renderProjects();
+                });
+            });
+        }
+
         // Hàm dựng cấu trúc thẻ dự án (HTML Card)
         function renderProjects() {
             projectGrid.innerHTML = "";
 
+            // Chuẩn bị từ khóa tìm kiếm (chuyển sang chữ thường và loại bỏ dấu tiếng Việt)
+            const cleanQuery = removeAccents(searchQuery).toLowerCase();
+
             // Lọc dữ liệu
             const filteredProjects = projectsData.filter(proj => {
                 const matchesFilter = (currentFilter === "all" || proj.category === currentFilter);
-                const searchStr = `${proj.title} ${proj.name} ${proj.description} ${proj.categoryText}`.toLowerCase();
-                const matchesSearch = searchStr.includes(searchQuery.toLowerCase());
-                return matchesFilter && matchesSearch;
+
+                // Nếu bộ lọc không khớp thì không cần xử lý tìm kiếm để tối ưu hiệu năng
+                if (!matchesFilter) return false;
+
+                const categoryText = categoryMap[proj.category] || "";
+                const searchStr = removeAccents(`${proj.title} ${proj.name} ${proj.description} ${categoryText}`).toLowerCase();
+                return searchStr.includes(cleanQuery);
             });
 
             // Cập nhật số lượng
@@ -724,7 +763,7 @@
                 card.className = "card";
                 card.innerHTML = `
                     <div class="card-header">
-                        <a href="https://tanchanh.github.io/${proj.name}/" target="_blank" class="card-title-link">
+                        <a href="https://tanchanh.github.io/${proj.name}/" target="_blank" rel="noopener" class="card-title-link">
                             <span class="card-icon">${proj.emoji}</span>
                             <h3 class="card-title">${proj.title}</h3>
                         </a>
@@ -756,17 +795,8 @@
             searchBox.focus();
         });
 
-        // Xử lý sự kiện click bộ lọc (Category Filters)
-        filterButtons.forEach(btn => {
-            btn.addEventListener("click", () => {
-                filterButtons.forEach(b => b.classList.remove("active"));
-                btn.classList.add("active");
-                currentFilter = btn.getAttribute("data-filter");
-                renderProjects();
-            });
-        });
-
-        // Render lần đầu khi tải trang
+        // Khởi tạo bộ lọc và danh sách dự án lần đầu khi tải trang
+        renderFilters();
         renderProjects();
     </script>
 </body>

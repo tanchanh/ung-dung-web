@@ -543,6 +543,14 @@
         // Dữ liệu tĩnh của Repositories
         const projectsData = [
             {
+                name: "quet_tao_qrcode",
+                emoji: "🔑",
+                title: "Quét Và Tạo Mã QR",
+                description: "Quét & Giải mã QR từ hình ảnh/Clipboard.<br>Tạo mã QR tùy chỉnh chất lượng cao (SVG/PNG).",
+                category: "utility",
+                updated: "26/07/2026"
+            },
+            {
                 name: "quanly-thuchi",
                 emoji: "💰",
                 title: "Quản Lý Thu Chi Hộ Gia Đình",
@@ -556,7 +564,7 @@
                 title: "Mã Hoá & Giải Mã AES-256",
                 description: "Ứng dụng giúp bạn bảo vệ bí mật nội dung tin nhắn, tài liệu và tập tin (file) bằng mật mã cá nhân trước khi gửi qua Zalo, Messenger, Email hay lưu trữ riêng tư.",
                 category: "security",
-                updated: "25/07/2026"
+                updated: "26/07/2026"
             },
             {
                 name: "chuyen-dinhdang-amthanh",
@@ -564,7 +572,23 @@
                 title: "Chuyển đổi tập tin âm thanh, video sang dạng OPUS, WAV, MP3.",
                 description: "Ứng dụng này giúp bạn chuyển hàng loạt tệp tin âm thanh, video sang định dạng OPUS (.opus) nhỏ gọn mà vẫn giữ được chất lượng gần như âm thanh gốc, định dạng WAV không giảm chất lượng, định dạng MP3 tương thích với nhiều thiết bị.",
                 category: "utility",
-                updated: "17/07/2026"
+                updated: "21/07/2026"
+            },
+            {
+                name: "markdown-latex-to-doc",
+                emoji: "📝",
+                title: "Chuyển Đổi Markdown & LaTeX",
+                description: "Chuyển đổi nội dung văn bản Markdown có kèm các công thức toán học LaTeX sang định dạng tài liệu Word (.docx).",
+                category: "text",
+                updated: "16/07/2026"
+            },
+            {
+                name: "tinhluong",
+                emoji: "💵",
+                title: "Công Cụ Tính Lương",
+                description: "Tính tổng lương từ các khoản phụ cấp trừ đi bảo hiểm",
+                category: "calc",
+                updated: "14/07/2026"
             },
             {
                 name: "xem-html",
@@ -583,6 +607,14 @@
                 updated: "14/07/2026"
             },
             {
+                name: "huyet-ap",
+                emoji: "🩺",
+                title: "Huyết Áp Của Bạn",
+                description: "Theo dõi chỉ số huyết áp và nhịp tim offline. Tự động phân tích chẩn đoán y khoa từ cẩm nang chuẩn, vẽ biểu đồ đường SVG kép trực quan, mã hoá bảo mật dữ liệu cục bộ và hỗ trợ xuất/nhập sao lưu CSV.",
+                category: "health",
+                updated: "09/07/2026"
+            },
+            {
                 name: "xoa-font-pdf",
                 emoji: "🔤",
                 title: "Xoá Font Trong File PDF",
@@ -597,14 +629,6 @@
                 description: "Chuẩn hoá dữ liệu Karaoke từ file TXT hoặc Clipboard.",
                 category: "text",
                 updated: "05/07/2026"
-            },
-            {
-                name: "huyet-ap",
-                emoji: "🩺",
-                title: "Huyết Áp Của Bạn",
-                description: "Theo dõi chỉ số huyết áp và nhịp tim offline. Tự động phân tích chẩn đoán y khoa từ cẩm nang chuẩn, vẽ biểu đồ đường SVG kép trực quan, mã hoá bảo mật dữ liệu cục bộ và hỗ trợ xuất/nhập sao lưu CSV.",
-                category: "health",
-                updated: "28/06/2026"
             },
             {
                 name: "he-mat-troi-3d", // Tên thư mục hoặc tên file không dấu dùng cho liên kết
@@ -655,14 +679,6 @@
                 updated: "07/06/2026"
             },
             {
-                name: "markdown-latex-to-doc",
-                emoji: "📝",
-                title: "Chuyển Đổi Markdown & LaTeX",
-                description: "Chuyển đổi nội dung văn bản Markdown có kèm các công thức toán học LaTeX sang định dạng tài liệu Word (.docx).",
-                category: "text",
-                updated: "07/06/2026"
-            },
-            {
                 name: "sosanh-vanban",
                 emoji: "🔍",
                 title: "So Sánh Văn Bản",
@@ -679,14 +695,6 @@
                 updated: "06/06/2026"
             },
             {
-                name: "quet_qrcode",
-                emoji: "📷",
-                title: "Quét Mã QR Code",
-                description: "Hỗ trợ quét và đọc nhanh nội dung của mã QR trực tiếp từ hình ảnh tải lên hoặc dán (paste) trực tiếp từ Clipboard.",
-                category: "utility",
-                updated: "06/06/2026"
-            },
-            {
                 name: "sosanh-hash-virus",
                 emoji: "🛡️",
                 title: "So Sánh File & Check Virus",
@@ -694,14 +702,6 @@
                 category: "security",
                 updated: "05/06/2026"
             },
-            {
-                name: "tinhluong",
-                emoji: "💵",
-                title: "Công Cụ Tính Lương",
-                description: "Tính tổng lương từ các khoản phụ cấp trừ đi bảo hiểm",
-                category: "calc",
-                updated: "05/06/2026"
-            }
         ];
 
         // Hàm chuyển đổi chuỗi tiếng Việt sang dạng không dấu để hỗ trợ tìm kiếm dễ dàng

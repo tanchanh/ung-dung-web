@@ -543,10 +543,26 @@
         // Dữ liệu tĩnh của Repositories
         const projectsData = [
             {
+                name: "anh-tu-docx-pdf",
+                emoji: "🖼️",
+                title: "Lấy Ảnh Từ DOCX & PDF",
+                description: "- Lấy ảnh gốc từ file PDF, Word (.docx).<br>  - Chuyển từng trang PDF thành ảnh.",
+                category: "office",
+                updated: "30/07/2026"
+            },
+            {
+                name: "mahoa-giaima",
+                emoji: "🔑",
+                title: "Mã Hoá & Giải Mã AES-256",
+                description: "Ứng dụng giúp bạn bảo vệ bí mật nội dung tin nhắn, tài liệu và tập tin (file) bằng mật mã cá nhân trước khi gửi qua Zalo, Messenger, Email hay lưu trữ riêng tư.<br>Có thể gửi ngay liên kết mã hoá văn bản.",
+                category: "security",
+                updated: "26/07/2026"
+            },
+            {
                 name: "quet_tao_qrcode",
                 emoji: "🔲",
                 title: "Quét Và Tạo Mã QR",
-                description: "Quét & Giải mã QR từ hình ảnh/Clipboard.<br>Tạo mã QR tùy chỉnh chất lượng cao (SVG/PNG).",
+                description: "- Quét & Giải mã QR từ hình ảnh/Clipboard.<br>- Tạo mã QR tùy chỉnh chất lượng cao (SVG/PNG).",
                 category: "utility",
                 updated: "26/07/2026"
             },
@@ -559,18 +575,10 @@
                 updated: "26/07/2026"
             },
             {
-                name: "mahoa-giaima",
-                emoji: "🔑",
-                title: "Mã Hoá & Giải Mã AES-256",
-                description: "Ứng dụng giúp bạn bảo vệ bí mật nội dung tin nhắn, tài liệu và tập tin (file) bằng mật mã cá nhân trước khi gửi qua Zalo, Messenger, Email hay lưu trữ riêng tư.",
-                category: "security",
-                updated: "26/07/2026"
-            },
-            {
                 name: "chuyen-dinhdang-amthanh",
                 emoji: "🎵",
                 title: "Chuyển đổi tập tin âm thanh, video sang dạng OPUS, WAV, MP3.",
-                description: "Ứng dụng này giúp bạn chuyển hàng loạt tệp tin âm thanh, video sang định dạng OPUS (.opus) nhỏ gọn mà vẫn giữ được chất lượng gần như âm thanh gốc, định dạng WAV không giảm chất lượng, định dạng MP3 tương thích với nhiều thiết bị.",
+                description: "Ứng dụng này giúp bạn chuyển hàng loạt tệp tin âm thanh, video sang định dạng:<br>- OPUS (.opus) nhỏ gọn mà vẫn giữ được chất lượng gần như âm thanh gốc.<br>- WAV không giảm chất lượng.<br>- MP3 tương thích với nhiều thiết bị.",
                 category: "utility",
                 updated: "21/07/2026"
             },
@@ -578,7 +586,7 @@
                 name: "markdown-latex-to-doc",
                 emoji: "📝",
                 title: "Chuyển Đổi Markdown & LaTeX",
-                description: "Chuyển đổi nội dung văn bản Markdown có kèm các công thức toán học LaTeX sang định dạng tài liệu Word (.docx).",
+                description: "Chuyển đổi nội dung văn bản Markdown từ Gemini, ChatGPT... có kèm các công thức toán học LaTeX sang định dạng tài liệu Word (.docx), Google Docs.",
                 category: "text",
                 updated: "16/07/2026"
             },
@@ -593,7 +601,7 @@
             {
                 name: "xem-html",
                 emoji: "🖥️",
-                title: "Hiển Thị Mã Nguồn Trang Web HTML",
+                title: "Xem Nội Dung Mã Nguồn Trang Web HTML",
                 description: "Công cụ gọn nhẹ dùng xem, soạn thảo, thử nghiệm và lưu trữ các tệp mã nguồn HTML trực tiếp trên trình duyệt.",
                 category: "office",
                 updated: "14/07/2026"
@@ -602,7 +610,7 @@
                 name: "chinh-co-anh-trong-docx",
                 emoji: "🖼️",
                 title: "Tự Động Chỉnh Kích Thước Ảnh Trong DOCX",
-                description: "Điều chỉnh kích thước hình ảnh trong tài liệu DOCX (Word) một cách nhanh chóng từ trình duyệt.",
+                description: "Điều chỉnh kích thước hình ảnh trong tài liệu DOCX (Word) tự động nhanh chóng.",
                 category: "office",
                 updated: "14/07/2026"
             },
@@ -625,8 +633,8 @@
             {
                 name: "danh_sach_karaoke",
                 emoji: "🎤",
-                title: "Chuẩn Hoá Dữ Liệu Karaoke",
-                description: "Chuẩn hoá dữ liệu Karaoke từ file TXT hoặc Clipboard.",
+                title: "Chuẩn Hoá Ghi Chú Karaoke",
+                description: "Chuẩn hoá ghi chép Karaoke từ file TXT hoặc Clipboard để dùng ngay hoặc lưu trữ.",
                 category: "text",
                 updated: "05/07/2026"
             },
@@ -634,7 +642,7 @@
                 name: "he-mat-troi-3d",
                 emoji: "🪐",
                 title: "Mô Hình Hệ Mặt Trời 3D",
-                description: "Mô hình Hệ Mặt Trời 3D tương tác trực quan, có thể xoay góc nhìn, phóng to, điều chỉnh tốc độ quỹ đạo và theo dõi thông tin chi tiết của từng hành tinh.",
+                description: "Mô hình Hệ Mặt Trời 3D tương tác trực quan, có thể xoay góc nhìn, phóng to, điều chỉnh tốc độ quỹ đạo và theo dõi, xem thông tin chi tiết của từng hành tinh.",
                 category: "simulation",
                 updated: "25/06/2026"
             },
@@ -647,18 +655,10 @@
                 updated: "18/06/2026"
             },
             {
-                name: "anh-tu-docx-pdf",
-                emoji: "🖼️",
-                title: "Lấy Ảnh Từ DOCX & PDF",
-                description: "1. Lấy ảnh gốc từ file Word (.docx).<br>2. Chuyển file PDF thành ảnh.",
-                category: "office",
-                updated: "18/06/2026"
-            },
-            {
                 name: "don-xin-nghi",
                 emoji: "📄",
                 title: "Tạo Đơn Xin Tạm Nghỉ Việc",
-                description: "Tạo đơn xin tạm nghỉ việc định dạng Word (.docx) đúng chuẩn văn bản hành chính.",
+                description: "Tạo đơn xin tạm nghỉ việc định dạng Word (.docx) đúng chuẩn văn bản hành chính hiện hành.",
                 category: "text",
                 updated: "10/06/2026"
             },
@@ -666,7 +666,7 @@
                 name: "pha-con",
                 emoji: "🧪",
                 title: "Tính Lượng Nước Pha Cồn",
-                description: "Hỗ trợ tính lượng nước cần bổ sung để giảm nồng độ.",
+                description: "Hỗ trợ tính lượng nước cần bổ sung hoặc thể tích cần đạt được để giảm nồng độ.",
                 category: "calc",
                 updated: "07/06/2026"
             },
@@ -674,7 +674,7 @@
                 name: "csv-tsv",
                 emoji: "📊",
                 title: "Xem & Sửa File CSV/TSV",
-                description: "Công cụ trực quan cho phép tải lên, lọc, chỉnh sửa ô dữ liệu và tải về các tập tin CSV hoặc TSV một cách nhanh chóng.",
+                description: "Công cụ đơn giản, trực quan cho phép tải lên, lọc, chỉnh sửa ô dữ liệu và tải về các tập tin CSV hoặc TSV một cách nhanh chóng.",
                 category: "text",
                 updated: "07/06/2026"
             },
@@ -698,7 +698,7 @@
                 name: "sosanh-hash-virus",
                 emoji: "🛡️",
                 title: "So Sánh File & Check Virus",
-                description: "Tính toán chuỗi HASH (SHA-256) của tập tin để so sánh tính toàn vẹn và hỗ trợ quét nhanh dấu hiệu virus qua mã băm.",
+                description: "Tính toán chuỗi HASH (SHA-256) của tập tin để so sánh tính toàn vẹn và hỗ trợ quét nhanh dấu hiệu virus qua mã băm từ VirusTotal.",
                 category: "security",
                 updated: "05/06/2026"
             },

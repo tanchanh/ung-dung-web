@@ -8,7 +8,7 @@ Trang Hub trung tâm hiển thị, tìm kiếm và phân loại các công cụ 
 
 * **Bộ lọc thông minh:** Hỗ trợ phân loại dự án nhanh chóng theo danh mục (**Tất cả**, **Tiện ích**, **Sức khoẻ**, **Dữ liệu**...).
 * **Tìm kiếm thời gian thực:** Định vị nhanh ứng dụng cần dùng ngay khi đang gõ ký tự vào ô tìm kiếm.
-* **Giao diện hiện đại:** Thiết kế tối màu kết hợp hiệu ứng chuyển sắc đổ bóng bóng bẩy, bo góc tinh tế, hiển thị tối ưu trên cả máy tính lẫn điện thoại.
+* **Giao diện hiện đại:** Thiết kế tối màu kết hợp hiệu ứng chuyển sắc đổ bóng, bo góc tinh tế, hiển thị tối ưu trên cả máy tính lẫn điện thoại.
 * **Tải file cục bộ:** Cho phép tải nhanh mã nguồn ứng dụng về máy để lưu trữ và sử dụng hoàn toàn **offline**.
 
 ---

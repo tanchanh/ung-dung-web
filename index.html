@@ -4,532 +4,412 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ứng Dụng Web An Toàn - D.T.Chánh</title>
+    <title>Ứng Dụng Web An Toàn - Dương Tấn Chánh</title>
     <style>
-        :root {
-            --bg-color: #080414;
-            --card-bg: rgba(18, 12, 38, 0.5);
-            --card-border: rgba(255, 255, 255, 0.06);
-            --accent-primary: #8b5cf6;
-            --accent-secondary: #d946ef;
-            --gradient-accent: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
-            --gradient-text: linear-gradient(to right, #ffffff, #d946ef);
-            --gradient-btn-local: linear-gradient(135deg, #7c3aed 0%, #c026d3 100%);
-            --gradient-btn-local-hover: linear-gradient(135deg, #6d28d9 0%, #a21caf 100%);
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --html-color: #e34c26;
-            --shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
+        :root {
+            --bg-dark: #000000;
+            --bg-surface: #1A1A1A;
+            --card-bg: #262626;
+            --text-light: #FFFFFF;
+            --text-muted: #CCCCCC;
+            --primary: #0066B6;
+            --secondary: #4020D0;
+            --highlight: #7FDD0F;
+            --success: #009911;
+            --warning: #EE6000;
+            --danger: #FF2040;
+            --border-subtle: #262626;
+            --border-visible: #CCCCCC;
+        }
+
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: var(--bg-color);
+            background-color: var(--bg-dark);
             background-image:
-                radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(217, 70, 239, 0.12) 0%, transparent 40%);
+                radial-gradient(circle at 15% 15%, rgba(64, 32, 208, 0.4) 0%, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(0, 102, 182, 0.35) 0%, transparent 45%);
             background-attachment: fixed;
-            color: var(--text-main);
-            min-height: 100vh;
+            color: var(--text-light);
+            padding: 0.5rem;
+            padding-bottom: 5rem;
             line-height: 1.6;
-            padding: 3rem 1.5rem 5rem 1.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            word-break: normal;
+            overflow-wrap: break-word;
         }
 
-        .container {
-            max-width: 30rem;
-            width: 100%;
-        }
-
-        /* Hero Section */
+        /* Phần đầu trang & Tác giả */
         header {
-            text-align: center;
-            margin-bottom: 1rem;
             display: flex;
             flex-direction: column;
             align-items: center;
+            text-align: center;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
         }
 
-        .profile-area {
+        .avatar-box {
             position: relative;
-            margin-bottom: 0rem;
+            margin-bottom: 1rem;
         }
 
-        .avatar {
-            width: 6.5rem;
-            height: 6.5rem;
+        .avatar-image {
+            width: 6rem;
+            height: 6rem;
             border-radius: 50%;
-            border: 3px solid rgba(139, 92, 246, 0.6);
-            padding: 3px;
-            background: var(--bg-color);
-            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
-            transition: var(--transition);
+            border: 3px solid var(--secondary);
+            background-color: var(--bg-surface);
+            box-shadow: 0 0 20px rgba(64, 32, 208, 0.6);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .profile-area:hover .avatar {
-            transform: scale(1.1) rotate(5deg);
-            border-color: var(--accent-secondary);
-            box-shadow: 0 8px 30px rgba(217, 70, 239, 0.5);
-        }
-
-        .github-badge {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            background: var(--gradient-accent);
-            border: 2px solid var(--bg-color);
-            border-radius: 50%;
-            width: 2rem;
-            height: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-        }
-
-        .github-badge svg {
-            width: 1.1rem;
-            height: 1.1rem;
-            fill: #ffffff;
+        .avatar-box:hover .avatar-image {
+            transform: scale(1.08) rotate(4deg);
+            border-color: var(--highlight);
+            box-shadow: 0 0 25px rgba(127, 221, 15, 0.6);
         }
 
         h1 {
-            font-size: 2.5rem;
-            font-weight: 600;
-            background: var(--gradient-text);
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            background: linear-gradient(135deg, var(--text-light) 0%, var(--highlight) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.2rem;
+            width: 100%;
         }
 
-        .subtitle {
+        .author-line {
+            font-size: 1.2rem;
+            font-style: normal;
+            font-weight: bold;
+            text-align: right;
+            color: var(--highlight);
+            width: 100%;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-description {
             color: var(--text-muted);
-            font-size: 1.1rem;
-            font-weight: 300;
-            max-width: 35rem;
+            font-size: 1.0rem;
+            font-weight: normal;
+            text-align: center;
+            margin-bottom: 1rem;
+            width: 100%;
+        }
+
+        .stats-badge-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--bg-surface);
+            border: 2px solid var(--border-subtle);
+            border-radius: 2rem;
+            padding: 0.5rem 1rem;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
             margin-bottom: 1rem;
         }
 
-        .stats-container {
-            display: flex;
-            gap: 1.5rem;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 1rem;
-            padding: 0.75rem 1.75rem;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+        .stats-badge-box .stat-highlight {
+            color: var(--highlight);
+            font-weight: bold;
         }
 
-        .stat-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-main);
-        }
-
-        .stat-val {
-            color: var(--accent-secondary);
-            font-weight: 700;
-        }
-
-        /* Interactive Controls */
-        .controls {
+        /* Khung điều khiển & Tìm kiếm */
+        .controls-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1rem;
             margin-bottom: 1.5rem;
             width: 100%;
         }
 
-        /* Search Bar */
-        .search-wrapper {
+        .search-field-box {
             position: relative;
+            display: flex;
+            align-items: center;
             width: 100%;
-            margin: 0 auto;
         }
 
-        .search-input {
+        .search-field-input {
             width: 100%;
-            background: rgba(255, 255, 255, 0.03);
-            border: 2px solid rgba(255, 255, 255, 0.07);
-            border-radius: 1rem;
-            padding: 1.1rem 1.5rem 1.1rem 3.2rem;
-            color: var(--text-main);
-            font-size: 1.05rem;
+            background-color: var(--bg-surface);
+            border: 2px solid var(--border-subtle);
+            border-radius: 2rem;
+            padding: 1rem;
+            padding-left: 3rem;
+            padding-right: 3rem;
+            color: var(--text-light);
+            font-size: 1.0rem;
             font-family: inherit;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .search-input:focus {
+        .search-field-input:focus {
             outline: none;
-            border-color: var(--accent-primary);
-            background: rgba(255, 255, 255, 0.06);
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(0, 102, 182, 0.5);
         }
 
-        .search-icon {
+        .search-icon-svg {
             position: absolute;
-            left: 1.2rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-            pointer-events: none;
-            transition: var(--transition);
+            left: 1rem;
             width: 1.3rem;
             height: 1.3rem;
+            stroke: var(--text-muted);
+            fill: none;
+            pointer-events: none;
         }
 
-        .search-input:focus+.search-icon {
-            color: var(--accent-primary);
-        }
-
-        .clear-btn {
+        .clear-input-button {
             position: absolute;
-            right: 1.2rem;
-            top: 50%;
-            transform: translateY(-50%);
+            right: 1rem;
             background: transparent;
             border: none;
             color: var(--text-muted);
             cursor: pointer;
-            font-size: 1.1rem;
-            padding: 0.2rem;
             display: none;
             align-items: center;
             justify-content: center;
+            padding: 0.3rem;
             border-radius: 50%;
-            transition: var(--transition);
+            transition: color 0.2s ease, background-color 0.2s ease;
         }
 
-        .clear-btn:hover {
-            color: var(--text-main);
-            background: rgba(255, 255, 255, 0.1);
+        .clear-input-button:hover {
+            color: var(--text-light);
+            background-color: var(--card-bg);
         }
 
-        /* Filter Chips */
-        .filters {
+        .clear-input-button svg {
+            width: 1.2rem;
+            height: 1.2rem;
+            stroke: currentColor;
+            fill: none;
+        }
+
+        /* Bộ lọc danh mục */
+        .filters-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 0.6rem;
+            gap: 0.5rem;
             width: 100%;
         }
 
-        .filter-btn {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+        .filter-pill-button {
+            background-color: var(--bg-surface);
+            border: 2px solid var(--border-subtle);
             color: var(--text-muted);
-            padding: 0.6rem 1.2rem;
+            padding: 0.5rem 1rem;
             border-radius: 2rem;
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: 0.95rem;
+            font-weight: normal;
             cursor: pointer;
-            transition: var(--transition);
+            font-family: inherit;
+            transition: all 0.25s ease;
         }
 
-        .filter-btn:hover {
-            color: var(--text-main);
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.15);
+        .filter-pill-button:hover {
+            color: var(--text-light);
+            border-color: var(--primary);
+            transform: translateY(-1px);
         }
 
-        .filter-btn.active {
-            color: #ffffff;
-            background: var(--gradient-btn-local);
+        .filter-pill-button.active {
+            color: var(--text-light);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             border-color: transparent;
-            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(64, 32, 208, 0.4);
         }
 
-        /* Project List */
-        .grid {
+        /* Danh sách thẻ dự án */
+        .project-items-list {
             display: flex;
             flex-direction: column;
-            gap: 1.25rem;
+            gap: 1rem;
             width: 100%;
-            animation: fadeIn 0.6s ease-out;
         }
 
-        /* Project Card (Minimal Row) */
-        .card {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            padding-bottom: 1.25rem;
+        .project-row-card {
+            background-color: var(--bg-surface);
+            border: 2px solid var(--border-subtle);
+            border-radius: 0.8rem;
+            padding: 1rem;
             display: flex;
             flex-direction: column;
-            gap: 0.4rem;
-            transition: var(--transition);
+            gap: 0.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
         }
 
-        .card:last-child {
-            border-bottom: none;
+        .project-row-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(64, 32, 208, 0.25);
         }
 
-        .card:hover {
-            border-color: rgba(217, 70, 239, 0.3);
-        }
-
-        .card-header {
+        .project-card-header {
             display: flex;
             align-items: center;
-            margin-bottom: 0.1rem;
+            width: 100%;
         }
 
-        .card-title-link {
+        .project-direct-link {
             display: inline-flex;
             align-items: center;
             gap: 0.6rem;
             text-decoration: none;
-            color: #ffffff;
-            transition: var(--transition);
-        }
-
-        .card-title-link:hover {
-            color: var(--accent-secondary);
-        }
-
-        .card-icon {
-            font-size: 1.4rem;
-            line-height: 1;
-        }
-
-        .card-title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: inherit;
-            overflow-wrap: break-word;
-            word-break: normal;
-        }
-
-        .card-description {
-            color: var(--text-muted);
-            font-size: 1rem;
-            font-weight: 400;
-            line-height: 1.5;
-            margin-bottom: 0.1rem;
-        }
-
-        .card-meta {
-            font-size: 1rem;
-            color: var(--text-muted);
-        }
-
-        .lang-indicator {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .lang-color {
-            width: 0.75rem;
-            height: 0.75rem;
-            border-radius: 50%;
-            background-color: var(--html-color);
-        }
-
-        /* Action Buttons */
-        .card-actions {
-            display: flex;
-            gap: 0.75rem;
-        }
-
-        .btn {
-            border: none;
-            border-radius: 0.8rem;
-            padding: 0.75rem 1rem;
-            font-size: 0.88rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.4rem;
-            text-decoration: none;
+            color: var(--text-light);
+            transition: color 0.2s ease;
             width: 100%;
         }
 
-        .btn-local {
-            background: var(--gradient-btn-local);
-            color: #ffffff;
-            box-shadow: 0 4px 10px rgba(124, 58, 237, 0.2);
+        .project-direct-link:hover h2 {
+            color: var(--highlight);
         }
 
-        .btn-local:hover {
-            background: var(--gradient-btn-local-hover);
-            transform: translateY(-1px);
-            box-shadow: 0 6px 15px rgba(124, 58, 237, 0.3);
+        .project-emoji-icon {
+            font-size: 1.3rem;
+            line-height: 1;
+            flex-shrink: 0;
         }
 
-        .btn-github {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: var(--text-main);
+        h2.project-heading {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: inherit;
+            transition: color 0.2s ease;
         }
 
-        .btn-github:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.15);
-            transform: translateY(-1px);
+        .project-description-text {
+            color: var(--text-muted);
+            font-size: 1.0rem;
+            line-height: 1.5;
         }
 
-        /* Empty State */
-        .empty-state {
+        /* Dòng thông tin meta: Ngày cập nhật bên trái, Nhãn phân loại bên phải */
+        .project-meta-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border-top: 2px solid var(--card-bg);
+            padding-top: 0.5rem;
+            margin-top: 0.3rem;
+        }
+
+        .project-category-badge {
+            background-color: var(--card-bg);
+            border: 2px solid var(--border-subtle);
+            color: var(--highlight);
+            padding: 0.2rem 0.6rem;
+            border-radius: 1rem;
+            font-size: 0.85rem;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* Trạng thái trống (Không có kết quả) */
+        .empty-results-box {
             display: none;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 4rem 2rem;
-            grid-column: 1 / -1;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 1.5rem;
+            padding: 1rem;
+            background-color: var(--bg-surface);
+            border: 2px solid var(--border-subtle);
+            border-radius: 0.8rem;
             color: var(--text-muted);
+            gap: 0.8rem;
+            margin-top: 1rem;
         }
 
-        .empty-state svg {
-            width: 4rem;
-            height: 4rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-muted);
-            opacity: 0.5;
+        .empty-results-box svg {
+            width: 3.5rem;
+            height: 3.5rem;
+            stroke: var(--warning);
+            fill: none;
         }
 
-        .empty-state h3 {
-            font-size: 1.25rem;
-            color: #ffffff;
-            margin-bottom: 0.5rem;
+        .empty-results-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--text-light);
         }
 
-        /* Footer */
+        /* Chân trang */
         footer {
-            margin-top: 5rem;
-            margin-left: auto;
-            margin-right: auto;
+            margin-top: 3rem;
             text-align: center;
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             color: var(--text-muted);
-            max-width: 100%;
+            border-top: 2px solid var(--bg-surface);
+            padding-top: 1rem;
             width: 100%;
-            line-height: 1.6;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 2rem;
-        }
-
-        footer a {
-            color: var(--accent-secondary);
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            body {
-                padding: 2rem 1rem 4rem 1rem;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .grid {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <!-- Hero Header -->
-        <header>
-            <div class="profile-area">
-                <img src="https://avatars.githubusercontent.com/u/130192548?v=4" alt="tanchanh Profile Picture"
-                    class="avatar">
-            </div>
-            <h1>ỨNG DỤNG WEB AN TOÀN</h1>
-            <p class="subtitle">Bộ sưu tập các ứng dụng web nhỏ gọn, công cụ tiện ích và sản phẩm mã hoá bảo mật chạy
-                trực tiếp trên trình duyệt.</p>
 
-            <div class="stats-container">
-                <div class="stat-item">
-                    <span>Tổng số phần mềm:</span>
-                    <span class="stat-val" id="total-count"></span>
-                </div>
-            </div>
-        </header>
+    <header>
+        <div class="avatar-box">
+            <img src="https://avatars.githubusercontent.com/u/130192548?v=4" alt="Dương Tấn Chánh Avatar" class="avatar-image">
+        </div>
+        <h1>DANH MỤC ỨNG DỤNG WEB AN TOÀN</h1>
+        <div class="author-line">Dương Tấn Chánh</div>
+        <p class="header-description">Bộ sưu tập các ứng dụng web nhỏ gọn, công cụ tiện ích và sản phẩm mã hoá bảo mật chạy trực tiếp trên trình duyệt.</p>
+        <div class="stats-badge-box">
+            <span>Tổng số ứng dụng hiển thị:</span>
+            <span class="stat-highlight" id="total-count">0</span>
+        </div>
+    </header>
 
-        <!-- Controls Section -->
-        <section class="controls">
-            <div class="search-wrapper">
-                <input type="search" id="search-box" class="search-input"
-                    placeholder="Tìm kiếm công cụ hoặc tính năng..." autocomplete="off">
-                <svg class="search-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                </svg>
-                <button id="clear-search" class="clear-btn" title="Xoá tìm kiếm">✕</button>
-            </div>
-
-            <div class="filters" id="filters-container">
-                <!-- Bộ lọc danh mục sẽ tự động được sinh ra bằng JS -->
-            </div>
-        </section>
-
-        <!-- Projects Grid -->
-        <main class="grid" id="project-grid">
-            <!-- Project Cards will be dynamically rendered / loaded -->
-        </main>
-
-        <!-- Empty State -->
-        <div class="empty-state" id="empty-state">
-            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+    <section class="controls-wrapper">
+        <div class="search-field-box">
+            <svg class="search-icon-svg" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
             </svg>
-            <h3>Không tìm thấy kết quả</h3>
-            <p>Hãy thử tìm kiếm với từ khoá khác hoặc chọn bộ lọc khác.</p>
+            <input type="text" id="search-input" class="search-field-input" placeholder="Tìm kiếm công cụ hoặc tính năng..." autocomplete="off">
+            <button id="clear-search-btn" class="clear-input-button" title="Xoá tìm kiếm" aria-label="Xoá tìm kiếm">
+                <svg stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
         </div>
 
-        <!-- Footer -->
-        <footer>
-            <p>Bản quyền thiết kế &copy; 2026 bởi D.T.Chánh.</p>
-        </footer>
+        <div class="filters-container" id="filters-container"></div>
+    </section>
+
+    <main class="project-items-list" id="project-items-list"></main>
+
+    <div class="empty-results-box" id="empty-results-box">
+        <svg stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <div class="empty-results-title">Không tìm thấy kết quả</div>
+        <p>Hãy thử tìm kiếm với từ khoá khác hoặc chọn bộ lọc khác.</p>
     </div>
 
+    <footer>
+        <p>Bản quyền thiết kế &copy; 2026 bởi Dương Tấn Chánh.</p>
+    </footer>
+
     <script>
-        // Bản đồ danh mục (Category Map) để chuyển đổi mã danh mục sang tên hiển thị tiếng Việt
         const categoryMap = {
             security: "Bảo mật",
             calc: "Tính toán",
@@ -540,7 +420,6 @@
             health: "Sức khoẻ"
         };
 
-        // Dữ liệu tĩnh của Repositories
         const projectsData = [
             {
                 name: "sosanh-vanban",
@@ -578,7 +457,7 @@
                 name: "mahoa-giaima",
                 emoji: "🔑",
                 title: "Mã Hoá & Giải Mã AES-256",
-                description: "Ứng dụng giúp bạn bảo vệ bí mật nội dung tin nhắn, tài liệu và tập tin (file) bằng mật mã cá nhân trước khi gửi qua Zalo, Messenger, Email hay lưu trữ riêng tư.<br>Có thể gửi ngay liên kết mã hoá văn bản.",
+                description: "Ứng dụng giúp bạn bảo vệ bí mật nội dung tin nhắn, tài liệu và tập tin (file) bằng mật mã cá nhân trước khi gửi qua Zalo, Messenger, Email hay lưu trữ riêng tư. Có thể gửi ngay liên kết mã hoá văn bản.",
                 category: "security",
                 updated: "25/08/2026"
             },
@@ -602,7 +481,7 @@
                 name: "quet-tao-qrcode",
                 emoji: "🔲",
                 title: "Quét Và Tạo Mã QR",
-                description: "- Quét & Giải mã QR từ hình ảnh/Clipboard.<br>- Tạo mã QR tùy chỉnh chất lượng cao (SVG/PNG).",
+                description: "Quét và giải mã QR từ hình ảnh hoặc Clipboard. Tạo mã QR tuỳ chỉnh chất lượng cao dạng SVG hoặc PNG.",
                 category: "utility",
                 updated: "19/08/2026"
             },
@@ -610,7 +489,7 @@
                 name: "lay-lien-ket",
                 emoji: "🔗",
                 title: "Lấy Liên Kết Từ PDF/HTML/Dán/Ctrl-V",
-                description: "Đây là ứng dụng giúp trích xuất toàn bộ các đường dẫn liên kết (Hyperlink và URL văn bản) từ các tập tin PDF, HTML, HTM hoặc nội dung dán từ Clipboard (Word, Web, Email...) một cách nhanh chóng.",
+                description: "Ứng dụng giúp trích xuất toàn bộ các đường dẫn liên kết (Hyperlink và URL văn bản) từ các tập tin PDF, HTML, HTM hoặc nội dung dán từ Clipboard (Word, Web, Email...) một cách nhanh chóng.",
                 category: "text",
                 updated: "07/08/2026"
             },
@@ -618,7 +497,7 @@
                 name: "anh-tu-docx-pdf",
                 emoji: "🖼️",
                 title: "Lấy Ảnh Từ DOCX & PDF",
-                description: "- Lấy ảnh gốc từ file PDF, Word (.docx).<br>  - Chuyển từng trang PDF thành ảnh.",
+                description: "Trích xuất ảnh gốc từ file PDF, Word (.docx) và hỗ trợ chuyển từng trang PDF thành định dạng hình ảnh.",
                 category: "office",
                 updated: "30/07/2026"
             },
@@ -633,8 +512,8 @@
             {
                 name: "chuyen-dinhdang-amthanh",
                 emoji: "🎵",
-                title: "Chuyển đổi tập tin âm thanh, video sang dạng OPUS, WAV, MP3.",
-                description: "Ứng dụng này giúp bạn chuyển hàng loạt tệp tin âm thanh, video sang định dạng:<br>- OPUS (.opus) nhỏ gọn mà vẫn giữ được chất lượng gần như âm thanh gốc.<br>- WAV không giảm chất lượng.<br>- MP3 tương thích với nhiều thiết bị.",
+                title: "Chuyển Đổi Âm Thanh, Video",
+                description: "Chuyển đổi hàng loạt tập tin âm thanh, video sang định dạng OPUS nhỏ gọn chất lượng cao, WAV không nén hoặc MP3 thông dụng.",
                 category: "utility",
                 updated: "21/07/2026"
             },
@@ -642,15 +521,15 @@
                 name: "tinhluong",
                 emoji: "💵",
                 title: "Công Cụ Tính Lương",
-                description: "Tính tổng lương từ các khoản phụ cấp trừ đi bảo hiểm",
+                description: "Tính tổng lương thực nhận từ các khoản phụ cấp và khấu trừ bảo hiểm theo quy định.",
                 category: "calc",
                 updated: "14/07/2026"
             },
             {
                 name: "xem-html",
                 emoji: "🖥️",
-                title: "Xem Nội Dung Mã Nguồn Trang Web HTML",
-                description: "Công cụ gọn nhẹ dùng xem, soạn thảo, thử nghiệm và lưu trữ các tệp mã nguồn HTML trực tiếp trên trình duyệt.",
+                title: "Xem Nội Dung Mã Nguồn HTML",
+                description: "Công cụ gọn nhẹ dùng xem, soạn thảo, thử nghiệm và lưu trữ các tập tin mã nguồn HTML trực tiếp trên trình duyệt.",
                 category: "office",
                 updated: "14/07/2026"
             },
@@ -658,7 +537,7 @@
                 name: "chinh-co-anh-trong-docx",
                 emoji: "🖼️",
                 title: "Tự Động Chỉnh Kích Thước Ảnh Trong DOCX",
-                description: "Điều chỉnh kích thước hình ảnh trong tài liệu DOCX (Word) tự động nhanh chóng.",
+                description: "Điều chỉnh kích thước hình ảnh trong tài liệu DOCX (Word) hoàn toàn tự động và đồng bộ.",
                 category: "office",
                 updated: "14/07/2026"
             },
@@ -674,7 +553,7 @@
                 name: "xoa-font-pdf",
                 emoji: "🔤",
                 title: "Xoá Font Trong File PDF",
-                description: "Gỡ bỏ Font để giảm dung lượng tập tin PDF.",
+                description: "Gỡ bỏ các bộ Font nhúng không cần thiết để tối ưu và giảm dung lượng tập tin PDF.",
                 category: "office",
                 updated: "08/07/2026"
             },
@@ -682,7 +561,7 @@
                 name: "danh-sach-karaoke",
                 emoji: "🎤",
                 title: "Chuẩn Hoá Ghi Chú Karaoke",
-                description: "Chuẩn hoá ghi chép Karaoke từ file TXT hoặc Clipboard để dùng ngay hoặc lưu trữ.",
+                description: "Chuẩn hoá danh mục ghi chép Karaoke từ tập tin TXT hoặc Clipboard để sử dụng ngay hoặc lưu trữ.",
                 category: "text",
                 updated: "05/07/2026"
             },
@@ -690,7 +569,7 @@
                 name: "he-mat-troi-3d",
                 emoji: "🪐",
                 title: "Mô Hình Hệ Mặt Trời 3D",
-                description: "Mô hình Hệ Mặt Trời 3D tương tác trực quan, có thể xoay góc nhìn, phóng to, điều chỉnh tốc độ quỹ đạo và theo dõi, xem thông tin chi tiết của từng hành tinh.",
+                description: "Mô hình Hệ Mặt Trời 3D tương tác trực quan, có thể xoay góc nhìn, phóng to, điều chỉnh tốc độ quỹ đạo và theo dõi thông tin chi tiết của từng hành tinh.",
                 category: "simulation",
                 updated: "25/06/2026"
             },
@@ -706,7 +585,7 @@
                 name: "pha-con",
                 emoji: "🧪",
                 title: "Tính Lượng Nước Pha Cồn",
-                description: "Hỗ trợ tính lượng nước cần bổ sung hoặc thể tích cần đạt được để giảm nồng độ.",
+                description: "Hỗ trợ tính lượng nước cần bổ sung hoặc thể tích cần đạt được để giảm nồng độ cồn chính xác.",
                 category: "calc",
                 updated: "07/06/2026"
             },
@@ -722,58 +601,81 @@
                 name: "nhau-ruou-ot",
                 emoji: "🍶",
                 title: "Công Thức Nhàu & Rượu Ớt",
-                description: "Cung cấp công thức và các bước chi tiết để làm nước Nhàu ngâm đường và Rượu Ớt.",
+                description: "Cung cấp công thức và các bước chi tiết để làm nước Nhàu ngâm đường và Rượu Ớt chăm sóc sức khoẻ.",
                 category: "health",
                 updated: "06/06/2026"
-            },
+            }
         ];
 
-        // Hàm chuyển đổi chuỗi tiếng Việt sang dạng không dấu để hỗ trợ tìm kiếm dễ dàng
         function removeAccents(str) {
             if (!str) return "";
             return str
                 .normalize("NFD")
                 .replace(/[\u0300-\u036f]/g, "")
                 .replace(/đ/g, "d")
-                .replace(/Đ/g, "D");
+                .replace(/Đ/g, "D")
+                .toLowerCase();
         }
 
-        // Khởi tạo các phần tử DOM
-        const projectGrid = document.getElementById("project-grid");
-        const searchBox = document.getElementById("search-box");
-        const clearSearchBtn = document.getElementById("clear-search");
-        const filtersContainer = document.getElementById("filters-container");
-        const emptyState = document.getElementById("empty-state");
-        const totalCountSpan = document.getElementById("total-count");
+        function stripHtmlTags(html) {
+            if (!html) return "";
+            return html.replace(/<[^>]*>?/gm, " ");
+        }
+
+        // Chuyển đổi chuỗi DD/MM/YYYY sang Timestamp để so sánh ngày chính xác
+        function parseDateToTimestamp(dateStr) {
+            if (!dateStr) return 0;
+            const parts = dateStr.split("/");
+            if (parts.length !== 3) return 0;
+            const day = parseInt(parts[0], 10);
+            const month = parseInt(parts[1], 10) - 1;
+            const year = parseInt(parts[2], 10);
+            return new Date(year, month, day).getTime();
+        }
+
+        const projectItemsListEl = document.getElementById("project-items-list");
+        const searchInputEl = document.getElementById("search-input");
+        const clearSearchBtnEl = document.getElementById("clear-search-btn");
+        const filtersContainerEl = document.getElementById("filters-container");
+        const emptyResultsBoxEl = document.getElementById("empty-results-box");
+        const totalCountEl = document.getElementById("total-count");
 
         let currentFilter = "all";
         let searchQuery = "";
 
-        // Hàm dựng các nút bộ lọc tự động
+        // Tiền xử lý dữ liệu: Tạo chỉ mục tìm kiếm và Tự động sắp xếp ngày giảm dần (Mới nhất lên đầu)
+        const preprocessedProjects = projectsData
+            .map(proj => {
+                const rawDescriptionText = stripHtmlTags(proj.description);
+                const categoryText = categoryMap[proj.category] || "";
+                const searchIndex = removeAccents(`${proj.title} ${proj.name} ${rawDescriptionText} ${categoryText}`);
+                return {
+                    ...proj,
+                    timestamp: parseDateToTimestamp(proj.updated),
+                    searchIndex: searchIndex
+                };
+            })
+            .sort((a, b) => b.timestamp - a.timestamp);
+
         function renderFilters() {
-            // Lấy danh sách các category thực tế có trong projectsData
             const activeCategories = [...new Set(projectsData.map(p => p.category))];
+            let filtersHtml = `<button type="button" class="filter-pill-button active" data-filter="all">Tất cả</button>`;
 
-            let filtersHtml = `<button class="filter-btn active" data-filter="all">Tất cả</button>`;
-
-            // Duyệt qua categoryMap để đảm bảo giữ nguyên thứ tự hiển thị mong muốn
             for (const [key, value] of Object.entries(categoryMap)) {
                 if (activeCategories.includes(key)) {
-                    filtersHtml += `<button class="filter-btn" data-filter="${key}">${value}</button>`;
+                    filtersHtml += `<button type="button" class="filter-pill-button" data-filter="${key}">${value}</button>`;
                 }
             }
 
-            // Dự phòng: Nếu có category nào mới trong projectsData mà chưa được định nghĩa ở categoryMap
             activeCategories.forEach(cat => {
                 if (!(cat in categoryMap)) {
-                    filtersHtml += `<button class="filter-btn" data-filter="${cat}">${cat}</button>`;
+                    filtersHtml += `<button type="button" class="filter-pill-button" data-filter="${cat}">${cat}</button>`;
                 }
             });
 
-            filtersContainer.innerHTML = filtersHtml;
+            filtersContainerEl.innerHTML = filtersHtml;
 
-            // Gắn sự kiện click cho các nút bộ lọc mới được tạo
-            const buttons = filtersContainer.querySelectorAll(".filter-btn");
+            const buttons = filtersContainerEl.querySelectorAll(".filter-pill-button");
             buttons.forEach(btn => {
                 btn.addEventListener("click", () => {
                     buttons.forEach(b => b.classList.remove("active"));
@@ -784,74 +686,71 @@
             });
         }
 
-        // Hàm dựng cấu trúc thẻ dự án (HTML Card)
         function renderProjects() {
-            projectGrid.innerHTML = "";
+            projectItemsListEl.innerHTML = "";
+            const cleanQuery = removeAccents(searchQuery.trim());
 
-            // Chuẩn bị từ khóa tìm kiếm (chuyển sang chữ thường và loại bỏ dấu tiếng Việt)
-            const cleanQuery = removeAccents(searchQuery).toLowerCase();
-
-            // Lọc dữ liệu
-            const filteredProjects = projectsData.filter(proj => {
+            const filteredProjects = preprocessedProjects.filter(proj => {
                 const matchesFilter = (currentFilter === "all" || proj.category === currentFilter);
-
-                // Nếu bộ lọc không khớp thì không cần xử lý tìm kiếm để tối ưu hiệu năng
                 if (!matchesFilter) return false;
-
-                const categoryText = categoryMap[proj.category] || "";
-                const searchStr = removeAccents(`${proj.title} ${proj.name} ${proj.description} ${categoryText}`).toLowerCase();
-                return searchStr.includes(cleanQuery);
+                if (!cleanQuery) return true;
+                return proj.searchIndex.includes(cleanQuery);
             });
 
-            // Cập nhật số lượng
-            totalCountSpan.textContent = filteredProjects.length;
+            totalCountEl.textContent = filteredProjects.length;
 
             if (filteredProjects.length === 0) {
-                emptyState.style.display = "flex";
+                emptyResultsBoxEl.style.display = "flex";
                 return;
             }
 
-            emptyState.style.display = "none";
+            emptyResultsBoxEl.style.display = "none";
 
-            // Hiển thị danh sách các thẻ
+            const fragment = document.createDocumentFragment();
+
             filteredProjects.forEach(proj => {
-                const card = document.createElement("div");
-                card.className = "card";
+                const card = document.createElement("article");
+                card.className = "project-row-card";
+
+                const categoryLabel = categoryMap[proj.category] || proj.category;
+
                 card.innerHTML = `
-                    <div class="card-header">
-                        <a href="https://${proj.name}.tanchanh.workers.dev/" target="_blank" rel="noopener" class="card-title-link">
-                            <span class="card-icon">${proj.emoji}</span>
-                            <h3 class="card-title">${proj.title}</h3>
+                    <div class="project-card-header">
+                        <a href="https://${proj.name}.tanchanh.workers.dev/" target="_blank" rel="noopener" class="project-direct-link">
+                            <span class="project-emoji-icon">${proj.emoji}</span>
+                            <h2 class="project-heading">${proj.title}</h2>
                         </a>
                     </div>
-                    <p class="card-description">${proj.description}</p>
-                    <div class="card-meta">Cập nhật: ${proj.updated}</div>
+                    <p class="project-description-text">${proj.description}</p>
+                    <div class="project-meta-info">
+                        <span>Cập nhật: ${proj.updated}</span>
+                        <span class="project-category-badge">${categoryLabel}</span>
+                    </div>
                 `;
-                projectGrid.appendChild(card);
+                fragment.appendChild(card);
             });
+
+            projectItemsListEl.appendChild(fragment);
         }
 
-        // Xử lý sự kiện khi gõ ô tìm kiếm
-        searchBox.addEventListener("input", (e) => {
+        searchInputEl.addEventListener("input", (e) => {
             searchQuery = e.target.value;
             if (searchQuery.trim() !== "") {
-                clearSearchBtn.style.display = "flex";
+                clearSearchBtnEl.style.display = "flex";
             } else {
-                clearSearchBtn.style.display = "none";
+                clearSearchBtnEl.style.display = "none";
             }
             renderProjects();
         });
 
-        // Xử lý nút xoá tìm kiếm
-        clearSearchBtn.addEventListener("click", () => {
-            searchBox.value = "";
+        clearSearchBtnEl.addEventListener("click", () => {
+            searchInputEl.value = "";
             searchQuery = "";
-            clearSearchBtn.style.display = "none";
+            clearSearchBtnEl.style.display = "none";
             renderProjects();
-            searchBox.focus();
+            searchInputEl.focus();
         });
 
-        // Khởi tạo bộ lọc và danh sách dự án lần đầu khi tải trang
         renderFilters();
         renderProjects();
     </script>

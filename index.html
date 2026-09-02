@@ -36,6 +36,9 @@
                 radial-gradient(circle at 85% 85%, rgba(0, 102, 182, 0.35) 0%, transparent 45%);
             background-attachment: fixed;
             color: var(--text-light);
+            max-width: 62.5rem;
+            margin-left: auto;
+            margin-right: auto;
             padding: 0.5rem;
             padding-bottom: 5rem;
             line-height: 1.6;
@@ -368,13 +371,11 @@
 
     <header>
         <div class="avatar-box">
-            <img src="https://avatars.githubusercontent.com/u/130192548?v=4" alt="Dương Tấn Chánh Avatar"
-                class="avatar-image">
+            <img src="https://avatars.githubusercontent.com/u/130192548?v=4" alt="Dương Tấn Chánh Avatar" class="avatar-image">
         </div>
-        <h1>DANH MỤC ỨNG DỤNG WEB AN TOÀN</h1>
+        <h1>ỨNG DỤNG WEB AN TOÀN</h1>
         <div class="author-line">Dương Tấn Chánh</div>
-        <p class="header-description">Bộ sưu tập các ứng dụng web nhỏ gọn, công cụ tiện ích và sản phẩm mã hoá bảo mật
-            chạy trực tiếp trên trình duyệt.</p>
+        <p class="header-description">Bộ sưu tập các ứng dụng web nhỏ gọn, công cụ tiện ích và sản phẩm mã hoá bảo mật chạy trực tiếp trên trình duyệt.</p>
         <div class="stats-badge-box">
             <span>Tổng số ứng dụng hiển thị:</span>
             <span class="stat-highlight" id="total-count">0</span>
@@ -384,11 +385,9 @@
     <section class="controls-wrapper">
         <div class="search-field-box">
             <svg class="search-icon-svg" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z">
-                </path>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
             </svg>
-            <input type="text" id="search-input" class="search-field-input"
-                placeholder="Tìm kiếm công cụ hoặc tính năng..." autocomplete="off">
+            <input type="text" id="search-input" class="search-field-input" placeholder="Tìm kiếm công cụ hoặc tính năng..." autocomplete="off">
             <button id="clear-search-btn" class="clear-input-button" title="Xoá tìm kiếm" aria-label="Xoá tìm kiếm">
                 <svg stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
@@ -403,8 +402,7 @@
 
     <div class="empty-results-box" id="empty-results-box">
         <svg stroke-width="1.5" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round"
-                d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
         </svg>
         <div class="empty-results-title">Không tìm thấy kết quả</div>
         <p>Hãy thử tìm kiếm với từ khoá khác hoặc chọn bộ lọc khác.</p>
@@ -635,7 +633,6 @@
             return html.replace(/<[^>]*>?/gm, " ");
         }
 
-        // Chuyển đổi chuỗi DD/MM/YYYY sang Timestamp để so sánh ngày chính xác
         function parseDateToTimestamp(dateStr) {
             if (!dateStr) return 0;
             const parts = dateStr.split("/");
@@ -656,7 +653,6 @@
         let currentFilter = "all";
         let searchQuery = "";
 
-        // Tiền xử lý dữ liệu: Tạo chỉ mục tìm kiếm và Tự động sắp xếp ngày giảm dần (Mới nhất lên đầu)
         const preprocessedProjects = projectsData
             .map(proj => {
                 const rawDescriptionText = stripHtmlTags(proj.description);

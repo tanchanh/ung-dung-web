@@ -425,12 +425,28 @@
 
         const projectsData = [
             {
+                name: "mahoa-giaima",
+                emoji: "🔑",
+                title: "Mã Hoá & Giải Mã AES-256",
+                description: "Ứng dụng giúp bạn bảo vệ bí mật nội dung tin nhắn, tài liệu và tập tin (file) bằng mật mã cá nhân trước khi gửi qua Zalo, Messenger, Email hay lưu trữ riêng tư. Có thể gửi ngay liên kết mã hoá văn bản.",
+                category: "security",
+                updated: "02/09/2026"
+            },
+            {
+                name: "tao-mat-ma",
+                emoji: "🔐",
+                title: "Tạo Mật Mã An Toàn",
+                description: "Công cụ tạo mật khẩu (password) mạnh ngẫu nhiên, tuỳ biến độ dài và độ phức tạp an toàn.",
+                category: "security",
+                updated: "02/09/2026"
+            },
+            {
                 name: "anh-thanh-pdf",
                 emoji: "🖼️",
                 title: "Chuyển Ảnh Thành File PDF",
                 description: "Chuyển 1 hoặc nhiều ảnh thành file PDF.",
                 category: "office",
-                updated: "31/08/2026"
+                updated: "02/09/2026"
             },
             {
                 name: "sosanh-vanban",
@@ -446,6 +462,14 @@
                 title: "So Sánh File & Check Virus",
                 description: "Tính toán chuỗi HASH (SHA-256) của tập tin để so sánh tính toàn vẹn và hỗ trợ quét nhanh dấu hiệu virus qua mã băm từ VirusTotal.",
                 category: "security",
+                updated: "31/08/2026"
+            },
+            {
+                name: "quet-tao-qrcode",
+                emoji: "🔲",
+                title: "Quét Và Tạo Mã QR",
+                description: "Quét và giải mã QR từ hình ảnh hoặc Clipboard. Tạo mã QR tuỳ chỉnh chất lượng cao dạng SVG hoặc PNG.",
+                category: "utility",
                 updated: "31/08/2026"
             },
             {
@@ -465,14 +489,6 @@
                 updated: "27/08/2026"
             },
             {
-                name: "mahoa-giaima",
-                emoji: "🔑",
-                title: "Mã Hoá & Giải Mã AES-256",
-                description: "Ứng dụng giúp bạn bảo vệ bí mật nội dung tin nhắn, tài liệu và tập tin (file) bằng mật mã cá nhân trước khi gửi qua Zalo, Messenger, Email hay lưu trữ riêng tư. Có thể gửi ngay liên kết mã hoá văn bản.",
-                category: "security",
-                updated: "25/08/2026"
-            },
-            {
                 name: "xuly-vanban",
                 emoji: "🔤",
                 title: "Công Cụ Xử Lý Văn Bản",
@@ -487,14 +503,6 @@
                 description: "Chuyển đổi nội dung văn bản Markdown từ Gemini, ChatGPT... có kèm các công thức toán học LaTeX sang định dạng tài liệu Word (.docx), Google Docs.",
                 category: "text",
                 updated: "23/08/2026"
-            },
-            {
-                name: "quet-tao-qrcode",
-                emoji: "🔲",
-                title: "Quét Và Tạo Mã QR",
-                description: "Quét và giải mã QR từ hình ảnh hoặc Clipboard. Tạo mã QR tuỳ chỉnh chất lượng cao dạng SVG hoặc PNG.",
-                category: "utility",
-                updated: "31/08/2026"
             },
             {
                 name: "lay-lien-ket",
@@ -633,6 +641,7 @@
             return html.replace(/<[^>]*>?/gm, " ");
         }
 
+        // Chuyển đổi chuỗi DD/MM/YYYY sang Timestamp để so sánh ngày chính xác
         function parseDateToTimestamp(dateStr) {
             if (!dateStr) return 0;
             const parts = dateStr.split("/");
@@ -653,6 +662,7 @@
         let currentFilter = "all";
         let searchQuery = "";
 
+        // Tiền xử lý dữ liệu: Tạo chỉ mục tìm kiếm và Tự động sắp xếp ngày giảm dần (Mới nhất lên đầu)
         const preprocessedProjects = projectsData
             .map(proj => {
                 const rawDescriptionText = stripHtmlTags(proj.description);
